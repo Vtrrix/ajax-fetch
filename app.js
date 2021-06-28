@@ -11,19 +11,16 @@ let i = 1,
 
 function sendReq() {
   // for button navigation-----------------------------------
-  displayArea.innerHTML = "";
+  displayArea.innerHTML = ``;
   nextBtn.style.display = "initial";
-  prevBtn.style.display = "initial";
+  // prevBtn.style.display = "initial";
   // -----------------------------------------------------------
   callForData.style.display = "none";
-  reqObj.open(
-    "GET",
-    `https://jsonplaceholder.typicode.com/posts?userId=${i}`,
-    true
-  );
+
   reqObj.onreadystatechange = function () {
     if (this.readyState == 4) {
       const data = JSON.parse(this.responseText);
+
       dataSize = data.length;
       if (this.status == 200) {
         data.map((ele) => {
@@ -45,7 +42,11 @@ function sendReq() {
       }
     }
   };
-
+  reqObj.open(
+    "GET",
+    `https://jsonplaceholder.typicode.com/posts?userId=${i}`,
+    true
+  );
   reqObj.send();
 
   // for scroll navigation----------------------
@@ -65,11 +66,24 @@ callForData.addEventListener("click", sendReq);
 
 // for button navigation-----------------------------------
 nextBtn.addEventListener("click", () => {
-  i++;
-  sendReq();
+  if (i < dataSize) {
+    i++;
+    sendReq();
+  }
+  if (i > 9) {
+    nextBtn.style.display = "none";
+  }
+  if (i > 1) {
+    prevBtn.style.display = "initial";
+  }
 });
 prevBtn.addEventListener("click", () => {
-  i--;
-  sendReq();
+  if (i > 1) {
+    i--;
+    sendReq();
+  }
+  if (i < 2) {
+    prevBtn.style.display = "none";
+  }
 });
 // -----------------------------------------------------------
