@@ -1,20 +1,33 @@
-body {
+* {
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  padding: 0;
+}
+body {
   background: #f9f7f7;
 }
 #main {
   color: #112d4e;
 }
-#main h1 {
+#nav {
+  position: sticky;
+  top: 0;
   margin: 0 0 40px 0;
-  padding-left: 30px;
-  font-weight: bold;
-  font-size: 7rem;
-
+  padding-left: 36px;
   background: #3f72af;
   color: #163961;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#main h1 {
+  font-weight: bold;
+  font-size: 5rem;
+  width: fit-content;
+  margin-right: 0;
 }
 #call {
   background: #3f72af;
@@ -29,7 +42,23 @@ body {
 #call:hover {
   background: #4f8cd6;
 }
-
+#btnNav {
+  width: fit-content;
+  /* margin-left: auto; */
+  margin-right: 50px;
+}
+.btn {
+  margin: 1em;
+  padding: 1em 2em;
+  border: 0;
+  border-radius: 30px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  background-color: #4f8cd6;
+}
 #data {
   display: flex;
   flex-direction: row;
@@ -40,11 +69,21 @@ body {
 .element {
   background: #dbe2ef;
   border-radius: 10px;
-  width: 350px;
-  padding: 18px;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 14px;
+  margin: 12px 34px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-.element h2 {
-  font-size: 3rem;
+.element h3 {
+  font-size: 4.5rem;
+  width: 8%;
+  min-width: 100px;
   margin: 0;
+  text-align: center;
+  padding-top: 10px;
+}
+.element div {
+  width: 85%;
 }
